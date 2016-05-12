@@ -1,0 +1,13 @@
+<h1>All Articles</h1>
+
+<ul id="articles">
+  <% @articles.each do | article | %>  <%# this code will be hidden %>
+    <li>
+      <%= link_to article.title, article_path(article),
+      class: 'article_title', id: "article_#{article.id}" %> <%# this code will show %>
+    </li>
+    <% end %>
+  </ul>
+
+
+<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
