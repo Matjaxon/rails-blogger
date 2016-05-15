@@ -1,5 +1,14 @@
 class CommentsController < ApplicationController
 
+  before_filter :require_login, except: [:create]
+
+  def require_login
+    unless logged_in?
+      redirect_to root_path
+      return false
+    end
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @comment.article_id = params[:article_id]
